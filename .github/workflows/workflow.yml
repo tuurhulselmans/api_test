@@ -17,4 +17,4 @@ jobs:
         run: docker build -t ${{ secrets.DOCKER_USER }}/python-db-test2324:latest .
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.DOCKER_USER }}/python-db-test:latest
+        run: docker push ${{ secrets.DOCKER_USER }}/python-db-test2324:latest
