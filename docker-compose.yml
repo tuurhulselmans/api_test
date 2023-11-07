@@ -1,7 +1,7 @@
 version: "3.9"
 services:
  useritem-api-service:
-  image: tuurhulse/python-db-test2324
+  image: tuurhuls/python-db-test2324
   ports:
     - "8000:8000"
   volumes:
