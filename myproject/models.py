@@ -12,12 +12,12 @@ class Weather(Base):
     temperature = Column(Float)
 
 
-class Item(Base):
-    __tablename__ = "items"
+class Forecast(Base):
+    __tablename__ = "forecasts"
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    description = Column(String, index=True)
-    owner_id = Column(Integer, ForeignKey("users.id"))
-
-    owner = relationship("User", back_populates="items")
+    city = Column(String, index=True)
+    date = Column(String)  # Assuming date as a string for simplicity
+    description = Column(String)
+    temperature_high = Column(Float)
+    temperature_low = Column(Float)
