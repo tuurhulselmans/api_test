@@ -4,15 +4,12 @@ from sqlalchemy.orm import relationship
 from database import Base
 
 
-class User(Base):
-    __tablename__ = "users"
+class Weather(Base):
+    __tablename__ = "weather"
 
     id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, unique=True, index=True)
-    hashed_password = Column(String)
-    is_active = Column(Boolean, default=True)
-
-    items = relationship("Item", back_populates="owner")
+    city = Column(String, index=True)
+    temperature = Column(Float)
 
 
 class Item(Base):
