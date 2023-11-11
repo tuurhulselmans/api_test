@@ -5,11 +5,10 @@ Dit project bevat een eenvoudige API gebouwd met FastAPI, SQLite als database vo
 ## Inhoudsopgave
 
 - [Projectstructuur](#projectstructuur)
-- [Installatie](#installatie)
 - [API-endpoints](#api-endpoints)
 - [Front-end](#front-end)
-- [Bijdragen](#bijdragen)
-- [Licentie](#licentie)
+- [Screenshots](#screenshots)
+
 
 ## Projectstructuur
 
@@ -22,9 +21,24 @@ De projectstructuur omvat de volgende belangrijke onderdelen:
 - `database.py`: Bevat de configuratie voor de database.
 - `static/`: Bevat statische bestanden zoals HTML en JavaScript voor de front-end.
 
-## Installatie
 
-1. Clone de repository:
+## API-endpoints
 
-   ```bash
-   git clone https://github.com/jouw-gebruikersnaam/jouw-api-project.git
+- **GET `/users/`**: Haalt de lijst met gebruikers op.
+- **GET `/users/{user_id}`**: Haalt een specifieke gebruiker op.
+- **POST `/users/`**: Creëert een nieuwe gebruiker.
+- **GET `/items/`**: Haalt de lijst met items op.
+- **POST `/users/{user_id}/items/`**: Creëert een nieuw item voor een gebruiker.
+- **GET `/forecast_ordered/{city}`**: Haalt geordende voorspellingsgegevens op voor een specifieke stad.
+
+Voor meer gedetailleerde informatie over elk endpoint, bekijk de [API-documentatie](http://localhost:8000/docs) tijdens het uitvoeren van de applicatie.
+
+## Screenshots
+
+Voor de werking van de api te laten zien heb ik wat screenshots gemaakt. 
+
+## Front-end
+
+De front-end is een eenvoudige HTML-pagina (`index.html`) met JavaScript (`script.js`).
+
+
