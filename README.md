@@ -1,6 +1,6 @@
 # API Project README
 
-Dit project bevat een eenvoudige API gebouwd met FastAPI, SQLite als database voor persistentie, en een eenvoudige front-end in HTML en JavaScript om met de API te communiceren.
+Dit project is een API die gebouwd is met FastAPI, waarbij gebruik wordt gemaakt van SQLite als database voor persistentie. De API biedt functionaliteit voor het beheren en bekijken van weersvoorspellingen voor specifieke steden.
 
 ## Inhoudsopgave
 
