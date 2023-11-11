@@ -41,4 +41,7 @@ Voor de werking van de api te laten zien heb ik wat screenshots gemaakt.
 
 De front-end is een eenvoudige HTML-pagina (`index.html`) met JavaScript (`script.js`).
 
+https://tuurhulselmans.github.io/api-front-end/
+https://github.com/tuurhulselmans/api-front-end
+
 
