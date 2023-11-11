@@ -1,15 +1,16 @@
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from typing import List
-
-
 import crud
 import models
 import schemas
 from database import SessionLocal, engine
 import os
+
+
 
 if not os.path.exists('.\sqlitedb'):
     os.makedirs('.\sqlitedb')
@@ -18,7 +19,15 @@ if not os.path.exists('.\sqlitedb'):
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+allowed_origin = "https://tuurhulselmans.github.io"
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[allowed_origin],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Dependency
 def get_db():
