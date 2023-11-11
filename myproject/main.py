@@ -1,6 +1,9 @@
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
 from sqlalchemy.orm import Session
 from typing import List
+
 
 import crud
 import models
@@ -50,6 +53,16 @@ def delete_weather(weather_id: int, db: Session = Depends(get_db)):
     db.commit()
     return db_weather
 
+
+@app.get("/temperature/{city}", response_model=float)
+def get_temperature_by_city(city: str, db: Session = Depends(get_db)):
+    weather = crud.get_weather_by_city(db, city)
+    if not weather:
+        raise HTTPException(status_code=404, detail="Weather data not found for the specified city")
+
+    return weather.temperature
+
+
 @app.post("/forecast/", response_model=schemas.Forecast)
 def create_forecast(forecast: schemas.ForecastCreate, db: Session = Depends(get_db)):
     return crud.create_forecast(db=db, forecast=forecast)
@@ -64,3 +77,28 @@ def read_forecast(forecast_id: int, db: Session = Depends(get_db)):
     if db_forecast is None:
         raise HTTPException(status_code=404, detail="Forecast not found")
     return db_forecast
+
+
+@app.get("/forecast_ordered/{city}", response_model=list[schemas.Forecast])
+def get_forecast_by_city_ordered_with_temp(
+        city: str,
+        min_temp: float = None,  # Default value is None
+        max_temp: float = None,  # Default value is None
+        db: Session = Depends(get_db)
+):
+    # Get the forecast data for the specified city and order by date
+    forecast = crud.get_forecast_by_city_ordered(db, city)
+
+    # Filter forecast data based on min_temp and max_temp if provided
+    filtered_forecast = []
+    for item in forecast:
+        if (min_temp is None or item.temperature_low >= min_temp) and \
+                (max_temp is None or item.temperature_high <= max_temp):
+            filtered_forecast.append(item)
+
+    if not filtered_forecast:
+        raise HTTPException(status_code=404, detail="Forecast data not found for the specified criteria")
+
+    return filtered_forecast
+
+

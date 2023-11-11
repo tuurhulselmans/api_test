@@ -1,6 +1,5 @@
 from sqlalchemy.orm import Session
-from models import Weather
-
+from models import Weather, Forecast
 import models
 import schemas
 
@@ -30,3 +29,9 @@ def get_forecasts(db: Session, skip: int = 0, limit: int = 100):
 
 def get_forecast(db: Session, forecast_id: int):
     return db.query(Forecast).filter(Forecast.id == forecast_id).first()
+
+def get_weather_by_city(db: Session, city: str):
+    return db.query(Weather).filter(Weather.city == city).first()
+
+def get_forecast_by_city_ordered(db: Session, city: str):
+    return db.query(Forecast).filter(Forecast.city == city).order_by(Forecast.date).all()
