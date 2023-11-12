@@ -24,11 +24,14 @@ De projectstructuur omvat de volgende belangrijke onderdelen:
 
 ## API-endpoints
 
-- **GET `/users/`**: Haalt de lijst met gebruikers op.
-- **GET `/users/{user_id}`**: Haalt een specifieke gebruiker op.
-- **POST `/users/`**: Creëert een nieuwe gebruiker.
-- **GET `/items/`**: Haalt de lijst met items op.
-- **POST `/users/{user_id}/items/`**: Creëert een nieuw item voor een gebruiker.
+- **GET `/weather/`**: Haalt de lijst met weergegevens op.
+- **POST `/weather/`**: Creëert nieuwe weergegevens.
+- **Get `/weather/{weather_id}`**: Haalt specifieke weergegevens op.
+- **DELETE `/weather/{weather_id}`**:  Verwijdert specifieke weergegevens.
+- **GET `/temperature/{city}`**: Haalt temperatuurgegevens op voor een specifieke stad.
+- **GET `/forecast/`**: Haalt de lijst met weersvoorspellingen op.
+- **POST `/forecast/`**: Creëert nieuwe weersvoorspellingsgegevens.
+- **GET `/forecast/{forecast_id}`**: Haalt specifieke weersvoorspellingsgegevens op.
 - **GET `/forecast_ordered/{city}`**: Haalt geordende voorspellingsgegevens op voor een specifieke stad.
 
 Voor meer gedetailleerde informatie over elk endpoint, bekijk de [API-documentatie](http://localhost:8000/docs) tijdens het uitvoeren van de applicatie.
